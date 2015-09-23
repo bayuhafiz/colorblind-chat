@@ -1,0 +1,58 @@
+<html>
+
+<head>
+    <title>Testing App</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+    <style>
+    html,
+    body {
+        height: 100%;
+    }
+    
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        display: table;
+        font-weight: 100;
+        font-family: 'Lato';
+    }
+    
+    .container {
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+    }
+    
+    .content {
+        text-align: center;
+        display: inline-block;
+    }
+    
+    .title {
+        font-size: 96px;
+    }
+    </style>
+</head>
+
+<body>
+    <script src="/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+    var socket = io.connect('http://localhost:2015');
+    socket.on('news', function(data) {
+        console.log(data);
+        socket.emit('my other event', {
+            my: 'data'
+        });
+    });
+    </script>
+    <div class="container">
+        <div class="content">
+            <div class="title">Colorblind Chat&trade;</div>
+            <div class="sub-title">Chat server is now up and running...</div>
+        </div>
+    </div>
+</body>
+
+</html>
